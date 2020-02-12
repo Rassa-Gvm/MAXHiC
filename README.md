@@ -26,13 +26,19 @@ MaxHiC is a background correcting model for General and Capture Hi-C experiments
 
 ## Installation
 
-You can download the package using [this link](https://github.com/Rassa-Gvm/MAXHiC/archive/master.zip). Use the following command to extract the downloaded file.
+You can download the package using [this link](https://github.com/Rassa-Gvm/MAXHiC/archive/master.zip). For example using wget command you can download as follows:
 
 ```
-unzip [Dir]/MAXHiC-master -d MAXHiC
+wget https://github.com/Rassa-Gvm/MAXHiC/archive/master.zip
 ```
 
-In which [Dir] must be replaced with the directory containing the downloaded file. This will result in a MAXHiC directory in your current working directory. Alternatively you can install git and use the following command:
+Use the following command to extract the downloaded file:
+
+```
+unzip MAXHiC-master.zip -d MAXHiC
+```
+
+This will result in a MAXHiC directory in your current working directory. Alternatively you can install git and use the following command:
 
 ```
 git clone https://github.com/Rassa-Gvm/MAXHiC.git
