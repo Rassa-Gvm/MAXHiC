@@ -2,23 +2,25 @@
 
 MaxHiC is a background correcting model for General and Capture Hi-C experiments. The model assigns significance level to the realness of the recorded interactions based on a predictive statistical model for the read-count of random interactions, the ones observed due to the Brownian Motion of fragments in the experiment. The model works on the interactions matrix of fixed binned DNA of any resolution. The model considers a negative binomial distribution for read-count of each interaction with two parameters of dispersion factor and mean. Dispersion factor is considered the same for all interactions but the mean parameter is calculated for each interaction separately and is a function of two factors: 1. Genomic distance between two interacting bins, which increases the expectation for read-count when decreased as it increases the probability of random collisions due to Brownian Motion. 2. Bias factors of the two interacting bins as different bins have different properties and different tendencies to show up in the experiment. The model is trained in iterations and in each iteration the interactions identified as significant according to user defined p-value are eliminated so the model would be trained based on insignificant interactions to be more representative of the random interactions and to avoid the biases that real interactions have e.g. their ordinal genomic distances.
 
+## Table of Contents
+
 - [Installation](#Installation)
 - [Requirements](#Requirements)
 - [Running MAXHiC](#Running-MAXHiC)
-  * [Positional Arguments](#Positional Arguments)
-  * [Informative Arguments](#Informative Arguments)
-  * [Tool-Related Arguments](#Tool-Related Arguments)
-  * [Training-Related Arguments](#Training-Related Arguments)
-  * [Capture-Model-Related Arguments](#Capture-Model-Related Arguments)
-- [File Formats](#File Formats)
-  * [Input Files](#Input Files)
-    + [Bins File](#Bins File)
-    + [Interactions File](#Interactions File)
-    + [Targets File](#Targets File)
-  * [Output Files](#Output Files)
-    + [Short Output](#Short Output)
-    + [Detailed Output](#Detailed Output)
-- [Citing MAXHiC](#Citing MAXHiC)
+  * [Positional Arguments](#Positional-Arguments)
+  * [Informative Arguments](#Informative-Arguments)
+  * [Tool-Related Arguments](#Tool-Related-Arguments)
+  * [Training-Related Arguments](#Training-Related-Arguments)
+  * [Capture-Model-Related Arguments](#Capture-Model-Related-Arguments)
+- [File Formats](#File-Formats)
+  * [Input Files](#Input-Files)
+    + [Bins File](#Bins-File)
+    + [Interactions File](#Interactions-File)
+    + [Targets File](#Targets-File)
+  * [Output Files](#Output-Files)
+    + [Short Output](#Short-Output)
+    + [Detailed Output](#Detailed-Output)
+- [Citing MAXHiC](#Citing-MAXHiC)
 - [License](#License)
 
 
