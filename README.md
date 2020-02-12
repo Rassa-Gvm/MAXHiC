@@ -12,7 +12,7 @@ MaxHiC is a background correcting model for General and Capture Hi-C experiments
   * [Tool-Related Arguments](#Tool-Related-Arguments)
   * [Training-Related Arguments](#Training-Related-Arguments)
   * [Capture-Model-Related Arguments](#Capture-Model-Related-Arguments)
-- [File Formats](#File-Formats)
+- [Files Formats](#Files-Formats)
   * [Input Files](#Input-Files)
     + [Bins File](#Bins-File)
     + [Interactions File](#Interactions-File)
@@ -61,7 +61,7 @@ You can run MAXHiC with the following command:
 python [Dir_to_MAXHiC]/Main.py [Arguments] base_directory save_directory 
 ```
 
-In which [Dir_to_MAXHiC] must be filled with the directory to the MAXHiC folder you created in the installation section. The full command is as follows:
+In which [Dir_to_MAXHiC] must be filled with the directory to the MAXHiC folder you created in the [installation section](#Installation). The full command is as follows:
 
 ```
 python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-p cores_number]  [-r training_rounds_number] [-rv T/F] [-mind Minimum_distance] [-maxd Maximum_distance] [-minread Minimum_read_count] [-silent T/F] [-full_output T/F] [-bait_ratio_lim bait_ratio_limit] [-bait_len_lim bait_length_limit] [-bait_overhangs bait_overhangs] [-targets_dir targets_dir] base_directory save_directory 
@@ -69,10 +69,10 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 ### Positional Arguments
 
 **base_directory**  
-*Description*: This must be replaced with the directory containing the raw data you want to analyze. It should have a .matrix file containing information about interactions and a .bed file containing information about bins. The formats are explained in the formats section.  
+*Description*: This must be replaced with the directory containing the raw data you want to analyze. It should have a .matrix file containing information about interactions and a .bed file containing information about bins. The formats of [bins file](#Bins-File) and [interactions file](#Interactions-File) are explained in the [Files Formats section](#Files-Formats).  
 
 **save_directory**  
-*Description*: The directory to save the results in.
+*Description*: The directory to save the results in. Output files and their formats are explained in the [formats section](#Output-Files).
 
 ### Informative Arguments
 
@@ -102,7 +102,7 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 *Default*: True  
 
 **-full_output**  
-*Description*: Whether to output fully detailed files for interactions or just with minimum required information. Output format is explained in the formats section.  
+*Description*: Whether to output fully detailed files for interactions or just with minimum required information. [Short](#Short-Output) and [detailed](#Detailed-Output) formats are explained in the formats section.  
 *Accepts*: T/F  
 *Default*: F  
 
@@ -161,11 +161,11 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 *Default*: 0  
 
 **-targets_dir** *(Required for the capture model)*  
-*Description*: The directory of the file containing the list of target regions. The format is explained in the formats section.  
+*Description*: The directory of the file containing the list of target regions. The format is explained in the [formats section](#Baits-File).  
 *Accepts*: A valid directory  
 
 
-## File Formats
+## Files Formats
 
 ### Input Files
 
