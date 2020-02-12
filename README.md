@@ -138,18 +138,18 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 ### Bins File  
 This is a file with .bed postfix in its name that contains information about the location of your bins. It must be tab delimited file without any header with the following columns:  
 
-```
+
 | Chromosome | Start | End | BinID |
-```
-For example:
-```
+
+For example:  
+
 | chr1 | 0 | 1000 | 1 |
 | --- | --- | --- | --- |
 | chr1 | 1000 | 2000 | 2 | 
 ...
 | chr2 | 0 | 1000 |  |  
 ...
-```
+
 
 **Chromosome**  
 Any format is accepted for chromosome, the only important thing is to have an identical name for all the bins in one chromosome. Bins related to one chromosome must be in a continuous range of rows.  
@@ -249,37 +249,37 @@ The bias factor calculated for bin2.
 | bin1ID | bin1Chromosome | bin1Start | bin1End | bin2ID | bin2Chromosome | bin2Start | bin2End | read_count | exp_read_count | neg_ln_p_val | neg_ln_q_val | b1_bias | b2_bias | b1_read_sum | b2_read_sum | b1_selfless_read_sum | b2_selfless_read_sum |
 ```
 
-Apart from the columns explained in Short Output section:
+Apart from the columns explained in Short Output section:  
 
-**bin1Chromosome**
-The chromosome of bin1.
+**bin1Chromosome**  
+The chromosome of bin1.  
 
-**bin1Start**
-The starting location of bin1 in the chromosome.
+**bin1Start**  
+The starting location of bin1 in the chromosome.  
 
-**bin1End**
-The ending location of bin1 in the chromosome.
+**bin1End**  
+The ending location of bin1 in the chromosome.  
 
-**bin2Chromosome**
-The chromosome of bin2.
+**bin2Chromosome**  
+The chromosome of bin2.  
 
-**bin2Start**
-The starting location of bin2 in the chromosome.
+**bin2Start**  
+The starting location of bin2 in the chromosome.  
 
-**bin2End**
-The ending location of bin2 in the chromosome.
+**bin2End**  
+The ending location of bin2 in the chromosome.  
 
-**b1_read_sum**:
-The total number of reads recorded for bin1 (The sum of read count of all interactions bin1 is included in).
+**b1_read_sum**:  
+The total number of reads recorded for bin1 (The sum of read count of all interactions bin1 is included in).  
 
-**b1_selfless_read_sum**
-The total number of reads recorded for bin1 aparted from its self-interaction (the case in which bin1 is the same as bin2).
+**b1_selfless_read_sum**  
+The total number of reads recorded for bin1 aparted from its self-interaction (the case in which bin1 is the same as bin2).  
 
-**b2_read_sum**:
-The total number of reads recorded for bin2.
+**b2_read_sum**:  
+The total number of reads recorded for bin2.  
 
-**b2_selfless_read_sum**
-The total number of reads recorded for bin2 aparted from its self-interaction.
+**b2_selfless_read_sum**  
+The total number of reads recorded for bin2 aparted from its self-interaction.  
 
 ## Citing MAXHiC
 
