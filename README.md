@@ -140,9 +140,12 @@ This is a file with .bed postfix in its name that contains information about the
 
 
 | Chromosome | Start | End | BinID |
+| --- | --- | --- | --- |
 
 For example:  
 
+|  |  |  |  |
+| --- | --- | --- | --- |
 | chr1 | 0 | 1000 | 1 |
 | --- | --- | --- | --- |
 | chr1 | 1000 | 2000 | 2 | 
@@ -164,16 +167,19 @@ This column must contain sorted unique integers from 1 to whatever number requir
 
 ### Interactions File  
 This is a file with .matrix postfix in its name that contains information about the interactions. It must be a tab delimited file without any header with the following columns:
-```
+
 | BinID1 | BinID2 | Read_Count |
-```
+| --- | --- | --- | --- |
+
 For example:
-```
+
+|  |  |  |
+| --- | --- | --- |
 | 1 | 1287 | 1 |
 | --- | --- | --- |
 | 1 | 8679 | 117 |  
 ...
-```
+
 
 **BinID1**  
 The ID of one of the ends of the interaction. It must exist in the ID column of the bins file.  
@@ -187,18 +193,20 @@ The total number of ligations recorded between the fragments located in the two 
 ### Baits File
 This is a file containing information about the location of baits or targets in Capture Hi-C. The overlap between baits and bins are calculated and bins are flagged as bait or other_end by the given criterion in the optional arguments section. The file must be tab delimited with header in its 1st line containing the following columns:
 
-```
+
 | Chromosome | Annotation | Start | End |
-```
+| --- | --- | --- | --- |
+
 For example:
-```
+
+|  |  |  |  |
+| --- | --- | --- | --- |
 | Chromosome | Annotation | Start | End |
 | --- | --- | --- | --- |
 | chr1 | Gene1Promoter | 4566 | 6723 |
 | --- | --- | --- | --- |
 | chr2 |  | 837123 | 837198 |   
 ...
-```
 
 **Chromosome**  
 The chromosome the bait is located in. Chromosome names must be the same names used for chromosomes in the bins file.  
