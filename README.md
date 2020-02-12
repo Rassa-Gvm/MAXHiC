@@ -39,7 +39,135 @@ You can run MAXHiC with the following command:
 ```
 python [Dir_to_MAXHiC]/Main.py [Arguments] base_directory save_directory 
 ```
+
 In which [Dir_to_MAXHiC] must be filled with the directory to the MAXHiC folder you created in the installation section.
+
+### Arguments
+
+The full command is as follows:
+
+```
+python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-p cores_number]  [-r training_rounds_number] [-rv T/F] [-mind Minimum_distance] [-maxd Maximum_distance] [-minread Minimum_read_count] [-silent T/F] [-full_output T/F] [-bait_ratio_lim bait_ratio_limit] [-bait_len_lim bait_length_limit] [-bait_overhangs bait_overhangs] [-targets_dir targets_dir] base_directory save_directory 
+```
+
+**-h**
+*Description*: Prints a help message explaining about usage and arguments.
+*Accepts*: No argument
+
+**-capture**
+*Description*: Whether the capture model should be run. In the case of capture data, this should be set to true.
+*Accepts*: T/F (T for True and F for False)
+*Default*: F
+
+**-pvl**
+*Description*: The p-value limit for significance of interactions.
+*Accepts*: A real number between 0 and 1.
+*Default*: 0.001
+
+**-device**
+*Description*: The device to be used for training the model. The list of available devices would be printed by -h option. 
+*Accepts*: CPU:[d]/GPU:[d], [d] must be replaced with the number of the device.
+*Default*: CPU:0
+
+**-p**
+*Description*: The number of threads to train the model using them. Ineffective in the case of using a GPU for training the model.
+*Accepts*: A natural number.
+*Default*: 24
+
+**-r**
+*Description*: The number of iterations used for filtering significant interactions and retraining the model. Strong recommendation: Do not use 1 as the model parameters would not be trained properly in this case.
+*Accepts*: A natural number.
+*Default*: 4
+
+**-rv**
+*Description*: Whether significant interactions should be replaced by their expected value for calculating the bias factors of bins.
+*Accepts*: T/F
+*Default*: True
+
+**-mind**
+*Description*: Interactions with genomic distance equal to or larger than the given value would be used in training the model.
+*Accepts*: An integer number >= 0
+*Default*: 0
+
+**-maxd**
+*Description*: Interactions with genomic distance equal to or less than the given value would be used in training the model.
+*Accepts*: An integer number >= 0 or -1 (for having no limit)
+*Default*: -1
+
+**-minread**
+*Description*: Interactions with read-count equal to or larger than the given value would be used in training the model.
+*Accepts*: A natural number.
+*Default*: 1
+
+**-silent**
+*Description*: Whether to print messages in the middle of training the model.
+*Accepts*: T/F
+*Default*: True
+
+**-full_output**
+*Description*: Whether to output fully detailed files for interactions or just with minimum required information. Output format is explained in the formats section.
+*Accepts*: T/F
+*Default*: F
+
+
+****
+*Accepts*:
+*Default*:
+*Description*:
+
+****
+*Accepts*:
+*Default*:
+*Description*:
+
+****
+*Accepts*:
+*Default*:
+*Description*:
+
+****
+*Accepts*:
+*Default*:
+*Description*:
+
+****
+*Accepts*:
+*Default*:
+*Description*:
+
+****
+*Accepts*:
+*Default*:
+*Description*:
+
+
+
+
+
+
+
+
+-bait_ratio_lim (Default: 0): The minimum ratio of overlap between a bin and target regions w.r.t. the bin’s length to know the bin as a target bin.
+-bait_len_lim (Default: 1): The minimum number of overlapping base-pairs between a bin and target regions to know the bin as a target bin.
+-bait_overhangs (Default: 0): The extra number of base-pairs from each side of a target region that will also be considered as target region.
+-targets_dir (Required for the capture model): The directory of the file containing the list of target regions. It should be a tab delimited file with header in its 1st line with the following columns:
+Chromosome, Annotation, Start, End
+base_directory: The directory containing information about the raw data. It should contain a .bed file for the information of bins and a .matrix file for the recorded interactions. Both files should be tab delimited with no header containing the following columns:
+The .bed file:
+Chromosome, Start, End, BinID
+The .matrix file:
+bin1ID, bin2ID, read_count
+ save_directory: The directory to save the results in.
+ 
+  (Default: F): 
+The header in the case of not having the full details:
+'bin1ID', 'bin2ID', 'read_count', 'neg_log_p_val', 'neg_log_q_val', 'exp_read_count', 'b1_bias', 'b2_bias'
+In which neg_log_pval stands for -ln(p-value) and q_val stands for the corrected p-value for multiple testing using Benjamini-Hochberg method.
+In the case of full details:
+'bin1ID', 'bin2ID', 'read_count', 'exp_read_count', 'neg_ln_p_val', 'neg_ln_q_val', 'b1_bias', 'b2_bias', 'b1_read_sum', 'b2_read_sum', 'b1_selfless_read_sum', 'b2_selfless_read_sum'
+In which read_sum stands for the total number of reads recorded for bin and selfless_read_sum stands for the total number of reads other than self-interactions recorded for bin.
+
+
 
 
 
