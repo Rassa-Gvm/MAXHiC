@@ -47,27 +47,23 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 ```
 ### Positional Arguments
 
-**base_directory**: 
+**base_directory**  
 *Description*: This must be replaced with the directory containing the raw data you want to analyze. It should have a .matrix file containing information about interactions and a .bed file containing information about bins. The formats are explained in the formats section.  
 
 **save_directory**  
 *Description*: The directory to save the results in.
 
-### Optional Arguments
+### Informative Arguments
 
 **-h**  
 *Description*: Prints a help message explaining about usage and arguments.  
-*Accepts*: No argument  
+*Accepts*: No argument 
 
-**-capture**  
-*Description*: Whether the capture model should be run. In the case of capture data, this should be set to true.  
-*Accepts*: T/F (T for True and F for False)  
-*Default*: F  
+**-V**
+*Description*: Prints tool's version.   
+*Accepts*: No argument 
 
-**-pvl**  
-*Description*: The p-value limit for significance of interactions.  
-*Accepts*: A real number between 0 and 1.  
-*Default*: 0.001  
+### Tool-Related Arguments
 
 **-device**  
 *Description*: The device to be used for training the model. The list of available devices would be printed by -h option.  
@@ -78,6 +74,23 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 *Description*: The number of threads to train the model using them. Ineffective in the case of using a GPU for training the model.  
 *Accepts*: A natural number.  
 *Default*: 24  
+
+**-silent**  
+*Description*: Whether to print messages in the middle of training the model.  
+*Accepts*: T/F  
+*Default*: True  
+
+**-full_output**  
+*Description*: Whether to output fully detailed files for interactions or just with minimum required information. Output format is explained in the formats section.  
+*Accepts*: T/F  
+*Default*: F  
+
+### Training-Related Arguments
+
+**-pvl**  
+*Description*: The p-value limit for significance of interactions.  
+*Accepts*: A real number between 0 and 1.  
+*Default*: 0.001  
 
 **-r**  
 *Description*: The number of iterations used for filtering significant interactions and retraining the model. Strong recommendation: Do not use 1 as the model parameters would not be trained properly in this case.  
@@ -104,14 +117,11 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 *Accepts*: A natural number.  
 *Default*: 1  
 
-**-silent**  
-*Description*: Whether to print messages in the middle of training the model.  
-*Accepts*: T/F  
-*Default*: True  
+### Capture-Model-Related Arguments
 
-**-full_output**  
-*Description*: Whether to output fully detailed files for interactions or just with minimum required information. Output format is explained in the formats section.  
-*Accepts*: T/F  
+**-capture**  
+*Description*: Whether the capture model should be run. In the case of capture data, this should be set to true.  
+*Accepts*: T/F (T for True and F for False)  
 *Default*: F  
 
 **-bait_ratio_lim**  
@@ -132,6 +142,7 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 **-targets_dir** *(Required for the capture model)*  
 *Description*: The directory of the file containing the list of target regions. The format is explained in the formats section.  
 *Accepts*: A valid directory  
+
 
 ## Formats
 
