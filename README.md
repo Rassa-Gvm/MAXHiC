@@ -2,6 +2,25 @@
 
 MaxHiC is a background correcting model for General and Capture Hi-C experiments. The model assigns significance level to the realness of the recorded interactions based on a predictive statistical model for the read-count of random interactions, the ones observed due to the Brownian Motion of fragments in the experiment. The model works on the interactions matrix of fixed binned DNA of any resolution. The model considers a negative binomial distribution for read-count of each interaction with two parameters of dispersion factor and mean. Dispersion factor is considered the same for all interactions but the mean parameter is calculated for each interaction separately and is a function of two factors: 1. Genomic distance between two interacting bins, which increases the expectation for read-count when decreased as it increases the probability of random collisions due to Brownian Motion. 2. Bias factors of the two interacting bins as different bins have different properties and different tendencies to show up in the experiment. The model is trained in iterations and in each iteration the interactions identified as significant according to user defined p-value are eliminated so the model would be trained based on insignificant interactions to be more representative of the random interactions and to avoid the biases that real interactions have e.g. their ordinal genomic distances.
 
+- [Installation](#Installation)
+- [Requirements](#Requirements)
+- [Running MAXHiC](#Running MAXHiC)
+  * [Positional Arguments](#Positional Arguments)
+  * [Informative Arguments](#Informative Arguments)
+  * [Tool-Related Arguments](#Tool-Related Arguments)
+  * [Training-Related Arguments](#Training-Related Arguments)
+  * [Capture-Model-Related Arguments](#Capture-Model-Related Arguments)
+- [File Formats](#File Formats)
+  * [Input Files](#Input Files)
+    + [Bins File](#Bins File)
+    + [Interactions File](#Interactions File)
+    + [Targets File](#Targets File)
+  * [Output Files](#Output Files)
+    + [Short Output](#Short Output)
+    + [Detailed Output](#Detailed Output)
+- [Citing MAXHiC](#Citing MAXHiC)
+- [License](#License)
+
 
 ## Installation
 
@@ -59,9 +78,9 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 *Description*: Prints a help message explaining about usage and arguments.  
 *Accepts*: No argument 
 
-**-V**
-*Description*: Prints tool's version.   
-*Accepts*: No argument 
+**-V**  
+*Description*: Prints tool's version.  
+*Accepts*: No argument  
 
 ### Tool-Related Arguments
 
@@ -144,9 +163,11 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 *Accepts*: A valid directory  
 
 
-## Formats
+## File Formats
 
-### Bins File  
+### Input Files
+
+#### Bins File  
 This is a file with .bed postfix in its name that contains information about the location of your bins. It must be tab delimited file without any header with the following columns:  
 
 
@@ -176,7 +197,7 @@ The end location of the bin in the chromosome. This basepair is not considered a
 **BinID**  
 This column must contain sorted unique integers from 1 to whatever number required and it must be added by one in each row.  
 
-### Interactions File  
+#### Interactions File  
 This is a file with .matrix postfix in its name that contains information about the interactions. It must be a tab delimited file without any header with the following columns:  
 
 | BinID1 | BinID2 | Read_Count |
@@ -200,7 +221,7 @@ The ID of the other end of the interaction. It must exist in the ID column of th
 **Read_Count**  
 The total number of ligations recorded between the fragments located in the two bins.
 
-### Baits File
+#### Baits File
 This is a file containing information about the location of baits or targets in Capture Hi-C. The overlap between baits and bins are calculated and bins are flagged as bait or other_end by the given criterion in the optional arguments section. The file must be tab delimited with header in its 1st line containing the following columns:
 
 
@@ -228,7 +249,9 @@ The starting basepair of the bait in the chromosome.
 **End**  
 The last basepair of the bait in the chromosome. Unlike in bins, this basepair is considered as a part of the bait.  
 
-### Short Output
+### Output Files
+
+#### Short Output
 Two files, one named cis_interactions.txt and one trans_interactions.txt will be created in the given save_directory. The first one contains information about cis interactions and the other one about trans interactions. In the case of the capture model 6 files will be created: bb_cis_interactions.txt, bo_cis_interactions.txt, oo_cis_interactions.txt, bb_trans_interactions.txt, bo_trans_interactions.txt, oo_trans_interactions.txt in which 'b' stands for bait and 'o' stands for other_end (non-bait) and so each file contains one type of interaction as specified by name. All files are tab delimited with the following hader in their 1st line:
  
 
@@ -240,7 +263,6 @@ The BinID of the 1st interacting bin. In the case of Capture model for *bo* inte
 
 **bin2ID**  
 The BinID of the 2nd interacting bin.  In the case of Capture model for *bo* interactions, this column contains the ID of the other_end.  
-
 **read_count**  
 The total number of ligations recorded between the fragments located in the two bins.  
 
@@ -259,7 +281,7 @@ The bias factor calculated for bin1.
 **b2_bias**  
 The bias factor calculated for bin2.  
 
-### Detailed Output
+#### Detailed Output
  
 | bin1ID | bin1Chromosome | bin1Start | bin1End | bin2ID | bin2Chromosome | bin2Start | bin2End | read_count | exp_read_count | neg_ln_p_val | neg_ln_q_val | b1_bias | b2_bias | b1_read_sum | b2_read_sum | b1_selfless_read_sum | b2_selfless_read_sum |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
