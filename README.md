@@ -147,7 +147,6 @@ For example:
 |  |  |  |  |
 | --- | --- | --- | --- |
 | chr1 | 0 | 1000 | 1 |
-| --- | --- | --- | --- |
 | chr1 | 1000 | 2000 | 2 | 
 ...
 | chr2 | 0 | 1000 |  |  
@@ -169,14 +168,13 @@ This column must contain sorted unique integers from 1 to whatever number requir
 This is a file with .matrix postfix in its name that contains information about the interactions. It must be a tab delimited file without any header with the following columns:
 
 | BinID1 | BinID2 | Read_Count |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 
 For example:
 
 |  |  |  |
 | --- | --- | --- |
 | 1 | 1287 | 1 |
-| --- | --- | --- |
 | 1 | 8679 | 117 |  
 ...
 
@@ -202,9 +200,7 @@ For example:
 |  |  |  |  |
 | --- | --- | --- | --- |
 | Chromosome | Annotation | Start | End |
-| --- | --- | --- | --- |
 | chr1 | Gene1Promoter | 4566 | 6723 |
-| --- | --- | --- | --- |
 | chr2 |  | 837123 | 837198 |   
 ...
 
@@ -223,9 +219,9 @@ The last basepair of the bait in the chromosome. Unlike in bins, this basepair i
 ### Short Output
 Two files, one named cis_interactions.txt and one trans_interactions.txt will be created in the given save_directory. The first one contains information about cis interactions and the other one about trans interactions. In the case of the capture model 6 files will be created: bb_cis_interactions.txt, bo_cis_interactions.txt, oo_cis_interactions.txt, bb_trans_interactions.txt, bo_trans_interactions.txt, oo_trans_interactions.txt in which 'b' stands for bait and 'o' stands for other_end (non-bait) and so each file contains one type of interaction as specified by name. All files are tab delimited with the following hader in their 1st line:
  
-```
+
 | bin1ID | bin2ID | read_count | neg_log_p_val | neg_log_q_val | exp_read_count | b1_bias | b2_bias |
-```
+| --- | --- | --- | --- | --- | --- | --- | --- |
 
 **bin1ID**  
 The BinID of the 1st interacting bin. In the case of Capture model for *bo* interactions, this column contains the ID of the bait.  
@@ -253,9 +249,8 @@ The bias factor calculated for bin2.
 
 ### Detailed Output
  
-```
 | bin1ID | bin1Chromosome | bin1Start | bin1End | bin2ID | bin2Chromosome | bin2Start | bin2End | read_count | exp_read_count | neg_ln_p_val | neg_ln_q_val | b1_bias | b2_bias | b1_read_sum | b2_read_sum | b1_selfless_read_sum | b2_selfless_read_sum |
-```
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 Apart from the columns explained in Short Output section:  
 
