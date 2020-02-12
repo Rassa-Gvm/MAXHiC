@@ -51,8 +51,8 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 ```
 
 **-h**
-*Description*: Prints a help message explaining about usage and arguments.
-*Accepts*: No argument
+*Description*: Prints a help message explaining about usage and arguments.  
+*Accepts*: No argument  
 
 **-capture**
 *Description*: Whether the capture model should be run. In the case of capture data, this should be set to true.
