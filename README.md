@@ -258,8 +258,7 @@ The starting basepair of the bait in the chromosome.
 The last basepair of the bait in the chromosome. Unlike in bins, this basepair is considered as a part of the bait.  
 
 ### Output Files
-In the case of general model two files, one named cis_interactions.txt and one trans_interactions.txt will be created in the given save_directory. The first one contains information about cis interactions and the other one about trans interactions. In the case of capture model 6 files will be created: bb_cis_interactions.txt, bo_cis_interactions.txt, oo_cis_interactions.txt, bb_trans_interactions.txt, bo_trans_interactions.txt, oo_trans_interactions.txt in which 'b' stands for bait and 'o' stands for other_end (non-bait) and so each file contains information about interactions of one type as specified by name. Bins are flagged as *bait* or *other end* as mentioned in the [baits file section](#Baits-File).
-
+In the case of general model two files, one named cis_interactions.txt and one trans_interactions.txt will be created in the given save_directory. The first one contains information about cis interactions and the other one about trans interactions. In the case of capture model 6 files will be created: bb_cis_interactions.txt, bo_cis_interactions.txt, oo_cis_interactions.txt, bb_trans_interactions.txt, bo_trans_interactions.txt, oo_trans_interactions.txt in which 'b' stands for bait and 'o' stands for other_end (non-bait) and so each file contains information about interactions of one type as specified by name. 
 #### Short Output
 
 Output files are tab delimited with the following header in their 1st line:
