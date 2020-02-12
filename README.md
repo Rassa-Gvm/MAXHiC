@@ -4,7 +4,7 @@ MaxHiC is a background correcting model for General and Capture Hi-C experiments
 
 - [Installation](#Installation)
 - [Requirements](#Requirements)
-- [Running MAXHiC](#Running MAXHiC)
+- [Running MAXHiC](#Running_MAXHiC)
   * [Positional Arguments](#Positional Arguments)
   * [Informative Arguments](#Informative Arguments)
   * [Tool-Related Arguments](#Tool-Related Arguments)
