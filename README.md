@@ -155,17 +155,18 @@ For example:
 
 **Chromosome**  
 Any format is accepted for chromosome, the only important thing is to have an identical name for all the bins in one chromosome. Bins related to one chromosome must be in a continuous range of rows.  
-**Start**
+
+**Start**  
 The starting location of the bin in the chromosome.  
 
-**End**
+**End**  
 The end location of the bin in the chromosome. This basepair is not considered as a part of the bin as it is the starting basepair of the next bin.  
 
-**BinID**
+**BinID**  
 This column must contain sorted unique integers from 1 to whatever number required and it must be added by one in each row.  
 
 ### Interactions File  
-This is a file with .matrix postfix in its name that contains information about the interactions. It must be a tab delimited file without any header with the following columns:
+This is a file with .matrix postfix in its name that contains information about the interactions. It must be a tab delimited file without any header with the following columns:  
 
 | BinID1 | BinID2 | Read_Count |
 | --- | --- | --- |
