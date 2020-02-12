@@ -102,7 +102,7 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 *Default*: True  
 
 **-full_output**  
-*Description*: Whether to output fully detailed files for interactions or just with minimum required information. [Short](#Short-Output) and [detailed](#Detailed-Output) formats are explained in the formats section.  
+*Description*: Whether to output fully detailed files for interactions or just with minimum required information. [Short](#Short-Output) and [detailed](#Detailed-Output) formats are explained in the [formats section](#Files-Formats).  
 *Accepts*: T/F  
 *Default*: F  
 
