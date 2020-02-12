@@ -114,24 +114,24 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 *Accepts*: T/F  
 *Default*: F  
 
-**-bait_ratio_lim**
+**-bait_ratio_lim**  
 *Description*: The minimum ratio of overlap between a bin and target regions w.r.t. the bin’s length to know the bin as a target bin.  
 *Accepts*: A real number between 0 and 1  
 *Default*: 0  
 
-**-bait_len_lim**
+**-bait_len_lim**  
 *Description*: The minimum number of overlapping base-pairs between a bin and target regions to know the bin as a target bin.  
 *Accepts*: An integer number >= 0  
 *Default*: 1  
 
-**-bait_overhangs**
+**-bait_overhangs**  
 *Description*: The extra number of base-pairs from each side of a target region that will also be considered as target region.  
 *Accepts*: An integer number >= 0  
 *Default*: 0  
 
-**-targets_dir** *(Required for the capture model)*
-*Description*: The directory of the file containing the list of target regions. The format is explained in the formats section.
-*Accepts*: A valid directory
+**-targets_dir** *(Required for the capture model)*  
+*Description*: The directory of the file containing the list of target regions. The format is explained in the formats section.  
+*Accepts*: A valid directory  
 
 ## Formats
 
