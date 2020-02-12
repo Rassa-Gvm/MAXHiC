@@ -82,91 +82,91 @@ python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-
 
 ### Informative Arguments
 
-**-h**  
+**-h, --help**  
 *Description*: Prints a help message explaining about usage and arguments.  
 *Accepts*: No argument 
 
-**-V**  
+**-v, --version**  
 *Description*: Prints tool's version.  
 *Accepts*: No argument  
 
 ### Tool-Related Arguments
 
-**-device**  
+**-d, --device**  
 *Description*: The device to be used for training the model. The list of available devices would be printed by -h option.  
 *Accepts*: CPU:[d]/GPU:[d], [d] must be replaced with the number of the device.  
 *Default*: CPU:0  
 
-**-p**  
+**-t, --threads**  
 *Description*: The number of threads to train the model using them. Ineffective in the case of using a GPU for training the model.  
 *Accepts*: A natural number.  
 *Default*: 24  
 
-**-silent**  
+**-s, --silent**  
 *Description*: Whether to print messages in the middle of training the model.  
 *Accepts*: T/F  
 *Default*: True  
 
-**-full_output**  
+**-do, --detailed_output**  
 *Description*: Whether to output fully detailed files for interactions or just with minimum required information. [Short](#Short-Output) and [detailed](#Detailed-Output) formats are explained in the [formats section](#Files-Formats).  
 *Accepts*: T/F  
 *Default*: F  
 
 ### Training-Related Arguments
 
-**-pvl**  
+**-pvl, --pval_limit**  
 *Description*: The p-value limit for significance of interactions.  
 *Accepts*: A real number between 0 and 1.  
 *Default*: 0.001  
 
-**-r**  
+**-r, --rounds**  
 *Description*: The number of iterations used for filtering significant interactions and retraining the model. Strong recommendation: Do not use 1 as the model parameters would not be trained properly in this case.  
 *Accepts*: A natural number.  
 *Default*: 4  
 
-**-rv**  
+**-rs, --replace_significants**  
 *Description*: Whether significant interactions should be replaced by their expected value for calculating the bias factors of bins.  
 *Accepts*: T/F  
 *Default*: True  
 
-**-mind**  
+**-mind, --min_distance**  
 *Description*: Interactions with genomic distance equal to or larger than the given value would be used in training the model.  
 *Accepts*: An integer number >= 0  
 *Default*: 0  
 
-**-maxd**  
+**-maxd, --max_distance**  
 *Description*: Interactions with genomic distance equal to or less than the given value would be used in training the model.  
 *Accepts*: An integer number >= 0 or -1 (for having no limit)  
 *Default*: -1  
 
-**-minread**  
+**-minr, --min_read**  
 *Description*: Interactions with read-count equal to or larger than the given value would be used in training the model.  
 *Accepts*: A natural number.  
 *Default*: 1  
 
 ### Capture-Model-Related Arguments
 
-**-capture**  
+**-c, --capture**  
 *Description*: Whether the capture model should be run. In the case of capture data, this should be set to true.  
 *Accepts*: T/F (T for True and F for False)  
 *Default*: F  
 
-**-bait_ratio_lim**  
+**-brl, --bait_ratio_lim**  
 *Description*: The minimum ratio of overlap between a bin and target regions w.r.t. the bin’s length to know the bin as a target bin.  
 *Accepts*: A real number between 0 and 1  
 *Default*: 0  
 
-**-bait_len_lim**  
+**-bll, --bait_len_lim**  
 *Description*: The minimum number of overlapping base-pairs between a bin and target regions to know the bin as a target bin.  
 *Accepts*: An integer number >= 0  
 *Default*: 1  
 
-**-bait_overhangs**  
+**-bo, --bait_overhangs**  
 *Description*: The extra number of base-pairs from each side of a target region that will also be considered as target region.  
 *Accepts*: An integer number >= 0  
 *Default*: 0  
 
-**-targets_dir** *(Required for the capture model)*  
+**-bd, --baits_dir** *(Required for the capture model)*  
 *Description*: The directory of the file containing the list of target regions. The format is explained in the [formats section](#Baits-File).  
 *Accepts*: A valid directory  
 
