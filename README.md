@@ -20,6 +20,8 @@ MaxHiC is a background correcting model for General and Capture Hi-C experiments
   * [Output Files](#Output-Files)
     + [Short Output](#Short-Output)
     + [Detailed Output](#Detailed-Output)
+- [Questions about MAXHiC](#Questions-about-MAXHiC)
+- [Reporting Issues](#Reporting-Issues)
 - [Citing MAXHiC](#Citing-MAXHiC)
 - [License](#License)
 
@@ -332,6 +334,14 @@ The total number of reads recorded for bin2.
 
 **b2_selfless_read_sum**  
 The total number of reads recorded for bin2 aparted from its self-interaction.  
+
+## Questions about MAXHiC
+
+Please feel free to ask your questions about MAXHiC in its [Google Groups forum](https://groups.google.com/forum/#!forum/maxhic). You can also post in the forum by sending an email to maxhic@googlegroups.com.
+
+## Reporting Issues
+
+If you faced with any problems in using MAXHiC (exceptions, bugs, crashes) you can report it in the [issues section of Github](https://github.com/Rassa-Gvm/MAXHiC/issues).
 
 ## Citing MAXHiC
 
