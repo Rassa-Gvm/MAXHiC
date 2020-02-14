@@ -70,7 +70,14 @@ python [Dir_to_MAXHiC]/Main.py [Arguments] base_directory save_directory
 In which [Dir_to_MAXHiC] must be filled with the directory to the MAXHiC folder you created in the [installation section](#Installation). The full command is as follows:
 
 ```
-python Main.py [-h] [-general T/F] [-pvl significance_limit] [-device device] [-p cores_number]  [-r training_rounds_number] [-rv T/F] [-mind Minimum_distance] [-maxd Maximum_distance] [-minread Minimum_read_count] [-silent T/F] [-full_output T/F] [-bait_ratio_lim bait_ratio_limit] [-bait_len_lim bait_length_limit] [-bait_overhangs bait_overhangs] [-targets_dir targets_dir] base_directory save_directory 
+python Main.py [-h] [-d device] [-t Threads_number] [-s silent_model]   
+               [-do detailed_output] [-pvl significance_limit]   
+               [-r Training_rounds] [-rs Replacing_significants]   
+               [-mind Minimum_distance] [-maxd Maximum_distance]   
+               [-minr Minimum_read_count] [-c run_capture]   
+               [-brl bait_ratio_limit] [-bll bait_length_limit]   
+               [-bo bait_overhangs] [-bd baits_directory] [-v]   
+               base_directory save_directory 
 ```
 ### Positional Arguments
 
