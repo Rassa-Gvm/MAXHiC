@@ -1,11 +1,15 @@
 # MAXHiC
 
-MaxHiC is a background correcting model for General and Capture Hi-C experiments. The model assigns significance level to the realness of the recorded interactions based on a predictive statistical model for the read-count of random interactions, the ones observed due to the Brownian Motion of fragments in the experiment. The model works on the interactions matrix of fixed binned DNA of any resolution. The model considers a negative binomial distribution for read-count of each interaction with two parameters of dispersion factor and mean. Dispersion factor is considered the same for all interactions but the mean parameter is calculated for each interaction separately and is a function of two factors: 1. Genomic distance between two interacting bins, which increases the expectation for read-count when decreased as it increases the probability of random collisions due to Brownian Motion. 2. Bias factors of the two interacting bins as different bins have different properties and different tendencies to show up in the experiment. The model is trained in iterations and in each iteration the interactions identified as significant according to user defined p-value are eliminated so the model would be trained based on insignificant interactions to be more representative of the random interactions and to avoid the biases that real interactions have e.g. their ordinal genomic distances.
+MaxHiC is a background correcting model for General and Capture Hi-C experiments that assigns significance to the recorded interactions. You can become more familiar with MAXHiC by reading [the paper](link) or the short summary presented in the [About MAXHiC](#About-MAXHiC) section that gives you enough information to understand the tool's arguments. 
 
 ## Table of Contents
 
 - [Installation](#Installation)
 - [Requirements](#Requirements)
+- [About MAXHiC](#About-MAXHiC)
+  * [Introduction](#Introduction)
+  * [Training Procedure](#Training-Procedure)
+  * [Capture Model](#Capture-Model)
 - [Running MAXHiC](#Running-MAXHiC)
   * [Positional Arguments](#Positional-Arguments)
   * [Informative Arguments](#Informative-Arguments)
@@ -60,6 +64,20 @@ You will need the following packages for running MAXHiC:
 * Scipy 1.1.+
 * Pandas 0.24.+
 * Tensorflow 1.13.+ < 2.
+
+## About MAXHiC
+
+### Introduction
+
+MAXHiC is a background correction model for general and capture Hi-C experiments that assigns significance level to the realness of the recorded interactions based on a predictive statistical model for the read-count of random interactions, the ones observed due to the Brownian Motion of fragments in the experiment. The model works on the interactions matrix of fixed binned DNA of any resolution. It considers a negative binomial distribution for read-count of each interaction with two parameters of dispersion factor and mean. Dispersion factor is considered the same for all interactions but the mean parameter is calculated for each interaction separately and is a function of two factors: 1. Genomic distance between two interacting bins, which increases the expectation for read-count when decreased as it increases the probability of random collisions due to Brownian Motion. 2. Bias factors of the two interacting bins as different bins have different properties and different tendencies to show up in the experiment. 
+
+### Training Procedure
+
+The model is trained in iterations and in each iteration the interactions identified as significant according to user defined p-value are eliminated so the model would be trained based on insignificant interactions to be more representative of the random interactions and to avoid the biases that real interactions have e.g. their ordinal genomic distances. There are also 3 options for users to train the model based on a part of interactions not all of them, i.e. minimum distance, maximum distance, minimum read cound. All the interactions within the genomic distance of [minimum distance, maximum distance] (in the case of cis interactions) and with read count >= minimum read count (in the case of the both cis and trans interactions) would be used in training the model. Default parameters are set in a way that all interactions are used but if you think e.g. interactions with read count below some number are not even due to the experiment process and should be completely eliminated or whether you are interested in a specific distance range and you don't want the model to be fit equally well based on all possible distances, you can use these options.
+
+### Capture Model
+
+Capture Hi-C is a version of Hi-C that some pieces of DNA are specified as *targets* or *baits* and interactions related to them are sequences with much more depth. So there would be 3 types of interactions in the experiment *bait-bait*, *bait-other*, *other-other* which have different conditions as explained so the general models cannot work well if they do not consider their differences. In MAXHiC the same model is extended to work for capture Hi-C considering these differences. In the capture version of the model, a file specifying the location of baits is also required as an input argument. The overlap between all baits and DNA bins are calculated and bins are flagged as bait or other based on the minimum required length of overlap with bait pieces. The minimum required overlap can be specified by two options, ratio limit which is the minimum ratio w.r.t. the length of the bin and length limit which is the absolute required length of overlap between bins and bait pieces. There is also an additional option named bait overhang which specifies the extra pieces also assumed as bait from the two ends of the original bait pieces.
 
 ## Running MAXHiC
 
