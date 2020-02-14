@@ -99,6 +99,8 @@ python Main.py [-h] [-d device] [-t Threads_number] [-s silent_model]
                [-bo bait_overhangs] [-bd baits_directory] [-v]   
                base_directory save_directory 
 ```
+In the preceding sections these arguments are explained precisely. It's important to note that you don't need to be an expert to tune MAXHiC's parameters. You can leave them at their default values and it would work fine for any data of any resolution. These parameters are added to give you more options to use the model in the way you want. You can become more familiar with their meaning by reading [About MAXHiC](#About-MAXHiC) section.
+
 ### Positional Arguments
 
 **base_directory**  
