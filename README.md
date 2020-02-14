@@ -248,6 +248,7 @@ This is a file containing information about the location of baits or targets in 
 For example:
 
 | Chromosome | Annotation | Start | End |
+| --- | --- | --- | --- |
 | chr1 | Gene1Promoter | 4566 | 6723 |
 | chr2 |  | 837123 | 837198 |   
 ...
