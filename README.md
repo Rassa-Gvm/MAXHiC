@@ -16,7 +16,7 @@ MaxHiC is a background correcting model for General and Capture Hi-C experiments
   * [Input Files](#Input-Files)
     + [Bins File](#Bins-File)
     + [Interactions File](#Interactions-File)
-    + [Targets File](#Targets-File)
+    + [Baits File](#Baits-File)
   * [Output Files](#Output-Files)
     + [Short Output](#Short-Output)
     + [Detailed Output](#Detailed-Output)
