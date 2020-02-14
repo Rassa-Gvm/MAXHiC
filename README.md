@@ -1,16 +1,16 @@
-# MAXHiC
+# MaxHiC
 
-MaxHiC is a background correcting model for General and Capture Hi-C experiments that assigns significance to the recorded interactions. You can become more familiar with MAXHiC by reading [the paper](link) or the short summary presented in the [About MAXHiC](#About-MAXHiC) section that gives you enough information to understand the tool's arguments. 
+MaxHiC is a background correcting model for General and Capture Hi-C experiments that assigns significance to the recorded interactions. You can become more familiar with MaxHiC by reading [the paper](link) or the short summary presented in the [About MaxHiC](#About-MaxHiC) section that gives you enough information to understand the tool's arguments. 
 
 ## Table of Contents
 
 - [Installation](#Installation)
 - [Requirements](#Requirements)
-- [About MAXHiC](#About-MAXHiC)
+- [About MaxHiC](#About-MaxHiC)
   * [Introduction](#Introduction)
   * [Training Procedure](#Training-Procedure)
   * [Capture Model](#Capture-Model)
-- [Running MAXHiC](#Running-MAXHiC)
+- [Running MaxHiC](#Running-MaxHiC)
   * [Positional Arguments](#Positional-Arguments)
   * [Informative Arguments](#Informative-Arguments)
   * [Tool-Related Arguments](#Tool-Related-Arguments)
@@ -24,52 +24,52 @@ MaxHiC is a background correcting model for General and Capture Hi-C experiments
   * [Output Files](#Output-Files)
     + [Short Output](#Short-Output)
     + [Detailed Output](#Detailed-Output)
-- [Questions about MAXHiC](#Questions-about-MAXHiC)
+- [Questions about MaxHiC](#Questions-about-MaxHiC)
 - [Reporting Issues](#Reporting-Issues)
-- [Citing MAXHiC](#Citing-MAXHiC)
+- [Citing MaxHiC](#Citing-MaxHiC)
 - [License](#License)
 
 
 ## Installation
 
-You can download the package using [this link](https://github.com/Rassa-Gvm/MAXHiC/archive/master.zip). For example using wget command you can download as follows:
+You can download the package using [this link](https://github.com/Rassa-Gvm/MaxHiC/archive/master.zip). For example using wget command you can download as follows:
 
 ```
-wget https://github.com/Rassa-Gvm/MAXHiC/archive/master.zip
+wget https://github.com/Rassa-Gvm/MaxHiC/archive/master.zip
 ```
 
 Use the following command to extract the downloaded file:
 
 ```
-unzip MAXHiC-master.zip -d MAXHiC
+unzip MaxHiC-master.zip -d MaxHiC
 ```
 
-This will result in a MAXHiC directory in your current working directory. Alternatively you can install git and use the following command:
+This will result in a MaxHiC directory in your current working directory. Alternatively you can install git and use the following command:
 
 ```
-git clone https://github.com/Rassa-Gvm/MAXHiC.git
+git clone https://github.com/Rassa-Gvm/MaxHiC.git
 ```
 
-Now you have downloaded the latest version of MAXHiC in a directory named MAXHiC in your working directory. You may run the tool by running Main.py script in MAXHiC directory. For more help run the following command:
+Now you have downloaded the latest version of MaxHiC in a directory named MaxHiC in your working directory. You may run the tool by running Main.py script in MaxHiC directory. For more help run the following command:
 
 ```
-python MAXHiC/Main.py -h
+python MaxHiC/Main.py -h
 ```
 
 ## Requirements
 
-You will need the following packages for running MAXHiC:
+You will need the following packages for running MaxHiC:
 * Python 3.+
 * Numpy 1.14.+
 * Scipy 1.1.+
 * Pandas 0.24.+
 * Tensorflow 1.13.+ < 2.
 
-## About MAXHiC
+## About MaxHiC
 
 ### Introduction
 
-MAXHiC is a background correction model for general and capture Hi-C experiments that assigns significance level to the realness of the recorded interactions based on a predictive statistical model for the read-count of random interactions, the ones observed due to the Brownian Motion of fragments in the experiment. The model works on the interactions matrix of fixed binned DNA of any resolution. It considers a negative binomial distribution for read-count of each interaction with two parameters of dispersion factor and mean. Dispersion factor is considered the same for all interactions but the mean parameter is calculated for each interaction separately and is a function of two factors: 1. Genomic distance between two interacting bins, which increases the expectation for read-count when decreased as it increases the probability of random collisions due to Brownian Motion. 2. Bias factors of the two interacting bins as different bins have different properties and different tendencies to show up in the experiment. 
+MaxHiC is a background correction model for general and capture Hi-C experiments that assigns significance level to the realness of the recorded interactions based on a predictive statistical model for the read-count of random interactions, the ones observed due to the Brownian Motion of fragments in the experiment. The model works on the interactions matrix of fixed binned DNA of any resolution. It considers a negative binomial distribution for read-count of each interaction with two parameters of dispersion factor and mean. Dispersion factor is considered the same for all interactions but the mean parameter is calculated for each interaction separately and is a function of two factors: 1. Genomic distance between two interacting bins, which increases the expectation for read-count when decreased as it increases the probability of random collisions due to Brownian Motion. 2. Bias factors of the two interacting bins as different bins have different properties and different tendencies to show up in the experiment. 
 
 ### Training Procedure
 
@@ -77,17 +77,17 @@ The model is trained in iterations and in each iteration the interactions identi
 
 ### Capture Model
 
-Capture Hi-C is a version of Hi-C that some pieces of DNA are specified as *targets* or *baits* and interactions related to them are sequences with much more depth. So there would be 3 types of interactions in the experiment *bait-bait*, *bait-other*, *other-other* which have different conditions as explained so the general models cannot work well if they do not consider their differences. In MAXHiC the same model is extended to work for capture Hi-C considering these differences. In the capture version of the model, a file specifying the location of baits is also required as an input argument. The overlap between all baits and DNA bins are calculated and bins are flagged as bait or other based on the minimum required length of overlap with bait pieces. The minimum required overlap can be specified by two options, ratio limit which is the minimum ratio w.r.t. the length of the bin and length limit which is the absolute required length of overlap between bins and bait pieces. There is also an additional option named bait overhang which specifies the extra pieces also assumed as bait from the two ends of the original bait pieces.
+Capture Hi-C is a version of Hi-C that some pieces of DNA are specified as *targets* or *baits* and interactions related to them are sequences with much more depth. So there would be 3 types of interactions in the experiment *bait-bait*, *bait-other*, *other-other* which have different conditions as explained so the general models cannot work well if they do not consider their differences. In MaxHiC the same model is extended to work for capture Hi-C considering these differences. In the capture version of the model, a file specifying the location of baits is also required as an input argument. The overlap between all baits and DNA bins are calculated and bins are flagged as bait or other based on the minimum required length of overlap with bait pieces. The minimum required overlap can be specified by two options, ratio limit which is the minimum ratio w.r.t. the length of the bin and length limit which is the absolute required length of overlap between bins and bait pieces. There is also an additional option named bait overhang which specifies the extra pieces also assumed as bait from the two ends of the original bait pieces.
 
-## Running MAXHiC
+## Running MaxHiC
 
-You can run MAXHiC with the following command:
+You can run MaxHiC with the following command:
 
 ```
-python [Dir_to_MAXHiC]/Main.py [Arguments] base_directory save_directory 
+python [Dir_to_MaxHiC]/Main.py [Arguments] base_directory save_directory 
 ```
 
-In which [Dir_to_MAXHiC] must be filled with the directory to the MAXHiC folder you created in the [installation section](#Installation). The full command is as follows:
+In which [Dir_to_MaxHiC] must be filled with the directory to the MaxHiC folder you created in the [installation section](#Installation). The full command is as follows:
 
 ```
 python Main.py [-h] [-d device] [-t Threads_number] [-s silent_model]   
@@ -99,7 +99,7 @@ python Main.py [-h] [-d device] [-t Threads_number] [-s silent_model]
                [-bo bait_overhangs] [-bd baits_directory] [-v]   
                base_directory save_directory 
 ```
-In the preceding sections these arguments are explained precisely. It's important to note that you don't need to be an expert to tune MAXHiC's parameters. You can leave them at their default values and it would work fine for any data of any resolution. These parameters are added to give you more options to use the model in the way you want. You can become more familiar with their meaning by reading [About MAXHiC](#About-MAXHiC) section.
+In the preceding sections these arguments are explained precisely. It's important to note that you don't need to be an expert to tune MaxHiC's parameters. You can leave them at their default values and it would work fine for any data of any resolution. These parameters are added to give you more options to use the model in the way you want. You can become more familiar with their meaning by reading [About MaxHiC](#About-MaxHiC) section.
 
 ### Positional Arguments
 
@@ -354,18 +354,15 @@ The total number of reads recorded for bin2.
 **b2_selfless_read_sum**  
 The total number of reads recorded for bin2 aparted from its self-interaction.  
 
-## Questions about MAXHiC
+## Questions about MaxHiC
 
-Please feel free to ask your questions about MAXHiC in its [Google Groups forum](https://groups.google.com/forum/#!forum/maxhic). You can also post in the forum by sending an email to maxhic@googlegroups.com.
+Please feel free to ask your questions about MaxHiC in its [Google Groups forum](https://groups.google.com/forum/#!forum/MaxHiC). You can also post in the forum by sending an email to MaxHiC@googlegroups.com.
 
 ## Reporting Issues
 
-If you faced with any problems in using MAXHiC (exceptions, bugs, crashes) you can report it in the [issues section of Github](https://github.com/Rassa-Gvm/MAXHiC/issues).
+If you faced with any problems in using MaxHiC (exceptions, bugs, crashes) you can report it in the [issues section of Github](https://github.com/Rassa-Gvm/MaxHiC/issues).
 
-## Citing MAXHiC
+## Citing MaxHiC
 
 ## License
-
-
-
 
