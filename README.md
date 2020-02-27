@@ -259,7 +259,7 @@ The ID of the other end of the interaction. It must exist in the ID column of th
 The total number of ligations recorded between the fragments located in the two bins.
 
 #### Baits File
-This is a file containing information about the location of baits or targets in Capture Hi-C. The overlap between baits and bins are calculated and bins are flagged as bait or other_end by the given criterion in the optional arguments section. The file must be tab delimited with header in its 1st line containing the following columns:
+This is a file containing information about the location of baits or targets in Capture Hi-C. The overlap between baits and bins are calculated and bins are flagged as bait or other_end by the given criterion in the optional arguments section. The file must be tab delimited without any header line containing the following columns:
 
 
 | Chromosome | Annotation | Start | End |
@@ -267,7 +267,7 @@ This is a file containing information about the location of baits or targets in 
 
 For example:
 
-| Chromosome | Annotation | Start | End |
+| | | | |
 | --- | --- | --- | --- |
 | chr1 | Gene1Promoter | 4566 | 6723 |
 | chr2 |  | 837123 | 837198 |   
