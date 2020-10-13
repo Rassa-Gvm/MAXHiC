@@ -1,6 +1,8 @@
 import numpy as np
 from operator import itemgetter
 import pandas as pd
+from os import path
+from sys import stderr
 
 
 def check_if_sorted_in_ascending_order(arr):
@@ -68,8 +70,16 @@ def calc_overlap(q1_chr, q1_start, q1_end, q2_chr, q2_start, q2_end):
 
 def read_baits(baits_file_dir):
 
+    # debugging info
+
+    if not path.exists(baits_file_dir):
+        print('%s does not exist!' % baits_file_dir, file=stderr)
+
+    elif not path.isfile(baits_file_dir):
+        print('%s is not a file!' % baits_file_dir, file=stderr)
+
     # baits are in even indices
-    baits_data = pd.read_csv(baits_file_dir, header=None, sep='\t').values
+    baits_data = pd.read_csv(baits_file_dir, header=None, sep='\t', dtype=np.object).values
 
     return baits_data[:, 0].astype(str), baits_data[:, 1].astype(int), baits_data[:, 2].astype(int)
 
