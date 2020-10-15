@@ -104,6 +104,7 @@ def save_results(cis_interactions, trans_interactions, cis_self_ints, model_info
                  'b1_read_sum', 'b2_read_sum', 'b1_selfless_read_sum', 'b2_selfless_read_sum'])))
 
     for itype in ['c_bb', 'c_bo', 'c_oo']:
+
         c_ints = cis_ints_dict[itype]
 
         # SAVING CIS INTERACTIONS ASYNCHRONOUSLY
@@ -120,33 +121,33 @@ def save_results(cis_interactions, trans_interactions, cis_self_ints, model_info
         log_p_vals = np_nbinom_logsf(c_ints[:, 2], exp_interactions, model_info_dict[itype + '_r'])
         cis_adj_q_val = calculate_q_val_fdr(c_ints, np.exp(log_p_vals))
 
-    if not full_output_mode:
-        interactions_info = np.column_stack((-1 * log_p_vals, -1 * cis_adj_q_val, exp_interactions, vi_p, vj_p))
-        full_ints = np.concatenate((c_ints, interactions_info), axis=1)
+        if not full_output_mode:
+            interactions_info = np.column_stack((-1 * log_p_vals, -1 * cis_adj_q_val, exp_interactions, vi_p, vj_p))
+            full_ints = np.concatenate((c_ints, interactions_info), axis=1)
 
-        saver_handlers.append(execute_func_asynchronously(save_one_info, (
-        full_ints, save_dir + '/%s_cis_interactions.txt' % itype.split('_')[1],
-        ['bin1ID', 'bin2ID', 'observed_interactions', 'neg_ln_p_val', 'neg_ln_q_val',
-         'exp_interactions', 'b1_bias', 'b2_bias'])))
+            saver_handlers.append(execute_func_asynchronously(save_one_info, (
+            full_ints, save_dir + '/%s_cis_interactions.txt' % itype.split('_')[1],
+            ['bin1ID', 'bin2ID', 'observed_interactions', 'neg_ln_p_val', 'neg_ln_q_val',
+             'exp_interactions', 'b1_bias', 'b2_bias'])))
 
-    else:
+        else:
 
-        interactions_info = np.column_stack((
-            c_ints[:, 0], bins_info[c_ints[:, 0], 0], bins_info[c_ints[:, 0], 1], bins_info[c_ints[:, 0], 2],
-            c_ints[:, 1], bins_info[c_ints[:, 1], 0], bins_info[c_ints[:, 1], 1], bins_info[c_ints[:, 1], 2],
-            c_ints[:, 2],
-            exp_interactions, -1 * log_p_vals, -1 * cis_adj_q_val, vi_p, vj_p,
-            bin_total_sum[c_ints[:, 0]],
-            bin_total_sum[c_ints[:, 1]],
-            bin_selfless_sum[c_ints[:, 0]],
-            bin_selfless_sum[c_ints[:, 1]]))
+            interactions_info = np.column_stack((
+                c_ints[:, 0], bins_info[c_ints[:, 0], 0], bins_info[c_ints[:, 0], 1], bins_info[c_ints[:, 0], 2],
+                c_ints[:, 1], bins_info[c_ints[:, 1], 0], bins_info[c_ints[:, 1], 1], bins_info[c_ints[:, 1], 2],
+                c_ints[:, 2],
+                exp_interactions, -1 * log_p_vals, -1 * cis_adj_q_val, vi_p, vj_p,
+                bin_total_sum[c_ints[:, 0]],
+                bin_total_sum[c_ints[:, 1]],
+                bin_selfless_sum[c_ints[:, 0]],
+                bin_selfless_sum[c_ints[:, 1]]))
 
-        saver_handlers.append(execute_func_asynchronously(save_one_info, (
-            interactions_info, save_dir + '/%s_cis_interactions.txt' % itype.split('_')[1],
-            ['bin1ID', 'bin1Chromosome', 'b1Start', 'b1End',
-             'bin2ID', 'bin2Chromosome', 'b2Start', 'b2End',
-             'read_count', 'exp_read_count', 'neg_ln_p_val', 'neg_ln_q_val', 'b1_bias', 'b2_bias',
-             'b1_read_sum', 'b2_read_sum', 'b1_selfless_read_sum', 'b2_selfless_read_sum'])))
+            saver_handlers.append(execute_func_asynchronously(save_one_info, (
+                interactions_info, save_dir + '/%s_cis_interactions.txt' % itype.split('_')[1],
+                ['bin1ID', 'bin1Chromosome', 'b1Start', 'b1End',
+                 'bin2ID', 'bin2Chromosome', 'b2Start', 'b2End',
+                 'read_count', 'exp_read_count', 'neg_ln_p_val', 'neg_ln_q_val', 'b1_bias', 'b2_bias',
+                 'b1_read_sum', 'b2_read_sum', 'b1_selfless_read_sum', 'b2_selfless_read_sum'])))
 
     save_one_info(np.asarray([[model_info_dict['s_norm']]]), params_save_dir + '/vis_transform_norm_factor.txt',
                   header=['norm_factor'])
